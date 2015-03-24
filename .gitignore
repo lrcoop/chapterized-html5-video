@@ -1,0 +1,40 @@
+
+# osx noise
+.DS_Store
+profile
+
+# xcode noise
+build/*
+*.mode1
+*.mode1v3
+*.mode2v3
+*.perspective
+*.perspectivev3
+*.pbxuser
+*.xcworkspace
+xcuserdata
+
+# svn & cvs
+.svn
+
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore:
+# https://help.github.com/articles/ignoring-files
+
+# Personal note things
+__Notes
+
+# Build things
+
+tmp
+.sass-cache
+
+
+# Node generated files
+node_modules
+npm-debug.log
+
+
+
+#merge conflict backups
+*.orig
