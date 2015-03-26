@@ -19,7 +19,8 @@ $(function() {
 					'15' : 'chapter-4',
 					'20' : 'chapter-5'
 				},
-
+				chapterKeys =[],
+  			currChapter = 0;
 
 				// array = $.map(chapters, function(value, index) {
 				//     return [value];
@@ -41,6 +42,7 @@ $(function() {
 
 				for (var key in chapters) {
 					chapterClicker(key);
+					chapterKeys.push(key);
 
 				}
 
@@ -141,7 +143,7 @@ $(function() {
 			$('.next').on('click', function(){
 				if (currentChapter !== 'chapter-5') {
 
-					$('.current').next('li').trigger('click');
+					$('.current').next().trigger('click');
 
 				}
 				else if (currentChapter === 'chapter-5'){
@@ -153,7 +155,7 @@ $(function() {
 			$('.prev').on('click', function(){
 				if (currentChapter !== 'chapter-1') {
 
-					$('.current').prev('li').trigger('click');
+					$('.current').prev().trigger('click');
 
 				}
 				else if (currentChapter === 'chapter-1'){
