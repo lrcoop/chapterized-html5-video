@@ -1,4 +1,6 @@
-$(function() {
+$(document).ready(function(){
+
+
 	var myVideo = document.getElementById('my-video');
 		//hasFlash = swfobject.hasFlashPlayerVersion('9.0.45');
 
@@ -20,19 +22,19 @@ $(function() {
 					'20' : 'chapter-5'
 				},
 				chapterKeys =[],
-  			currChapter = 0;
+  			//currChapter = 0;
 
 				// array = $.map(chapters, function(value, index) {
 				//     return [value];
 				// }),
 				// arrayLength = array.length,
 
-				currentChapter = 0;
+				currentChapter = 'chapter-1';
 
 				chapterClicker = function(i) {
 					$('.' + chapters[key]).on('click', function(){
 						myVideo.currentTime = i;
-						currentChapter = i;
+
 						myVideo.play();
 						$('video').addClass('playing');
 					});
@@ -72,6 +74,31 @@ $(function() {
 						myVideo.play();
 					}
 				});
+				//previous and next functions
+
+				$('.next').click(function(){
+				if (currentChapter !== 'chapter-5') {
+
+					$('.' + currentChapter).next().trigger('click');
+
+				}
+				else if (currentChapter === 'chapter-5'){
+						myVideo.currentTime = 0;
+						myVideo.play();
+				}
+			});
+
+			$('.prev').click(function(){
+				if (currentChapter !== 'chapter-1') {
+
+					$('.' + currentChapter).prev().trigger('click');
+
+				}
+				else if (currentChapter === 'chapter-1'){
+						myVideo.currentTime = 20;
+						myVideo.play();
+				}
+			});
 		}
 // custom controls
 		$('#fullscreen').on('click', function(){
@@ -145,29 +172,7 @@ $(function() {
 
 			}
 
-			$('.next').on('click', function(){
-				if (currentChapter !== 'chapter-5') {
 
-					$('.current').next().trigger('click');
-
-				}
-				else if (currentChapter === 'chapter-5'){
-						myVideo.currentTime = 0;
-						myVideo.play();
-				}
-			});
-
-			$('.prev').on('click', function(){
-				if (currentChapter !== 'chapter-1') {
-
-					$('.current').prev().trigger('click');
-
-				}
-				else if (currentChapter === 'chapter-1'){
-						myVideo.currentTime = 20;
-						myVideo.play();
-				}
-			});
 
 	}
 });
