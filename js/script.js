@@ -60,6 +60,7 @@ $(function() {
 
 				myVideo.onended = function() {
 					myVideo.currentTime = 0;
+					$('video').removeClass('playing');
 				}
 
 				$('video').on('click', function(){
@@ -72,6 +73,10 @@ $(function() {
 					}
 				});
 		}
+// custom controls
+		$('#fullscreen').on('click', function(){
+			$('html').addClass('fullscreen');
+		});
 
 		function onTrackedVideoFrame(currentChapter, currentTime, duration){
 			currentTime = Math.floor(myVideo.currentTime);

@@ -17,7 +17,7 @@ body {
   background: #999;
   height: 100%;
   min-height: 600px;
-  width: 100%; }
+  width: auto; }
 
 p {
   color: #fff;
@@ -27,7 +27,7 @@ p {
   text-transform: none; }
 
 .l-page-wrapper {
-  height: 100%;
+  height: auto;
   width: 100%;
   background: #efefef;
   position: relative; }
@@ -39,14 +39,25 @@ p {
   width: 80%;
   position: relative;
   height: 100%; }
+  .fullscreen .l-content-wrapper {
+    width: 100%;
+    height: auto;
+    background: black; }
 
 #video-wrapper {
   margin: 0 auto;
   width: 80%;
   height: 80%; }
+  .fullscreen #video-wrapper {
+    width: 100%;
+    height: auto; }
   #video-wrapper video {
     border: 2px solid #fff;
     margin: 20px auto; }
+    .fullscreen #video-wrapper video {
+      width: 100%;
+      height: auto;
+      margin: 0 auto; }
 
 /*
  * Clearfix: contain floats
