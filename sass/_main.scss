@@ -20,16 +20,153 @@
 			}
 		}
 	}
-	.prev, .next {
+	#controls-wrapper {
+		width: 100%;
 		background: #000;
-		color: #fff;
-		cursor: pointer;
+		padding: 10px 50px;
+		text-align: center;
+
+	}
+	#progress-wrap {
+		float: left;
+		width: 80px;
 		display: inline-block;
-		height: auto;
-		margin: 30px 20px 10px;
-		padding: 10px;
-		text-transform: uppercase;
-		width: auto;
+		div{
+			width: 25px;
+			display: inline-block;
+			text-align: center;
+		}
+		span{
+			display: inline-block;
+			width: 10px;
+			text-align:center;
+		}
+	}
+	#play-pause {
+		display: inline-block;
+		float: left;
+		width: 20px;
+		height: 20px;
+		text-indent: 9999px;
+		&.playing {
+			.play-button {
+				transition: all 0.25s ease;
+				opacity: 0;
+				visibility: hidden;
+			}
+			.pause-button {
+				transition: all 0.25s ease;
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+			.play-button {
+				transition: all 0.25s ease;
+				position: absolute;
+				display:block;
+				width: 0;
+				height: 0;
+				border-top: 10px solid transparent;
+				border-left: 15px solid white;
+				border-bottom: 10px solid transparent;
+				opacity: 1;
+				visibility: visible;
+			}
+			.pause-button {
+				transition: all 0.25s ease;
+				position: absolute;
+				opacity: 0;
+				visibility: hidden;
+				span {
+					width: 5px;
+				  height: 15px;
+				  background: #FFF;
+				  display: block;
+				  float: left;
+				  margin-right: 2px;
+				}
+
+			}
+
+	}
+
+	.chapter-skip-wrap {
+		float: left;
+		margin: 2px 0 0 20px;
+
+		.btn {
+			float: left;
+			width: 18px;
+			height: 20px;
+			margin-right: 10px;
+			display:inline-block;
+
+			&.prev {
+				width: 30px;
+				height: 20px;
+
+				span{
+					display: inline-block;
+				  width: 0;
+				  height: 0;
+				  border-top: 7px solid rgba(0, 0, 0, 0);
+				  border-right: 11px solid #FFF;
+				  border-bottom: 7px solid rgba(0, 0, 0, 0);
+				  margin: 0;
+
+				  &:last-child{
+				  	position: relative;
+				  	left: -5px;
+				  	top: 0px;
+				  }
+				}
+			}
+
+			&.next {
+				width: 30px;
+				height: 20px;
+
+				span:last-child{
+					display: inline-block;
+				  width: 0;
+				  height: 0;
+				  border-top: 7px solid rgba(0, 0, 0, 0);
+				  border-left: 11px solid #FFF;
+				  border-bottom: 7px solid rgba(0, 0, 0, 0);
+				  margin: 0;
+				  position: relative;
+				  left:-5px;
+				}
+
+				span:first-child{
+					display: inline-block;
+				  width: 0;
+				  height: 0;
+				  border-top: 7px solid rgba(0, 0, 0, 0);
+				  border-left: 11px solid #FFF;
+				  border-bottom: 7px solid rgba(0, 0, 0, 0);
+				  margin: 0;
+
+				}
+			}
+		}
+
+	}
+	#volume-control {
+		width: 150px;
+		float: left;
+		display: inline-block;
+
+		input {
+			width: 75px;
+		}
+		#volume-icon {
+			display:inline-block;
+			width: 20px;
+			height: 20px;
+			background: red;
+		}
 	}
 
 	video {

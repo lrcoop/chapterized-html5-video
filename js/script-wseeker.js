@@ -5,7 +5,7 @@ $(document).ready(function(){
 		//hasFlash = swfobject.hasFlashPlayerVersion('9.0.45');
 
 
-
+		if(Modernizr.video) {
 			var duration,
 				flags = {
 					'first' : false,
@@ -22,13 +22,13 @@ $(document).ready(function(){
 					'15' : 'chapter-4',
 					'20' : 'chapter-5'
 				},
-
+				//seeker = $('#seeker')[0],
 				currentChapter = 'chapter-1';
 
 				chapterClicker = function(i) {
 					$('.' + chapters[key]).on('click', function(){
 						myVideo.currentTime = i;
-
+						//$('#seeker').value = myVideo.currentTime;
 						myVideo.play();
 						$('video,#play-pause').removeClass('paused').addClass('playing');
 
@@ -46,13 +46,16 @@ $(document).ready(function(){
 				myVideo.onloadedmetadata = function(){
 					duration = myVideo.duration;
 					myVideo.currentTime = 0;
+					//if wanted seeker
 
+					// seekerMaxVal = $('#seeker').attr('max', myVideo.duration);
+					// console.log(seeker, seekerMaxVal);
 				};
 
 				myVideo.ontimeupdate = function() {
 					trackVideoPlay('video', myVideo.currentTime, duration, chapters);
 		     	onTrackedVideoFrame(currentChapter, this.duration);
-
+		     	//seeker.value = myVideo.currentTime;
 				};
 
 				myVideo.onended = function() {
@@ -96,17 +99,22 @@ $(document).ready(function(){
 						myVideo.play();
 				}
 			});
-
+		}
 // custom controls
 		$('#fullscreen').on('click', function(){
-			$('html').toggleClass('fullscreen');
+			$('html').addClass('fullscreen');
 		});
+		//if wanted seeker
+		// $('#seeker').change(function(){
+		// 	currentTime = myVideo.currentTime;
+		// 	newVidTime = seeker.value;
+		// 	myVideo.currentTime = newVidTime;
 
+		// });
 		$('#volume-range').change(function(){
 			var currentVolume = myVideo.volume;
 			newVolume = $(this)[0].value;
 			myVideo.volume = newVolume;
-			checkVolumeChange();
 		});
 
 		function onTrackedVideoFrame(currentChapter, currentTime, duration){
@@ -117,37 +125,7 @@ $(document).ready(function(){
     	$('#current').text(currentTime);
     	$("#duration").text(duration);
 		}
-		//switch cases for volume animation
-		function checkVolumeChange(volume, newVolume) {
-			volume = myVideo.volume;
-			volumeIcon = $('#volume-icon');
 
-			switch(volume){
-				case volume=0:
-					volumeIcon.removeClass().addClass('mute')
-					console.log('0');
-					break;
-				case volume=.25:
-					volumeIcon.removeClass().addClass('quarter')
-					console.log('.25');
-					break;
-
-			case volume=.5:
-					volumeIcon.removeClass().addClass('half')
-					console.log('.5');
-					break;
-
-			case volume=.75:
-					volumeIcon.removeClass().addClass('third')
-					console.log('.75');
-					break;
-
-			case volume=1:
-					volumeIcon.removeClass().addClass('max')
-					console.log('1');
-					break;
-			}
-		}
 		function trackVideoPlay(videoType, progress, duration, chapters) {
 
 			progress = Math.floor(progress);

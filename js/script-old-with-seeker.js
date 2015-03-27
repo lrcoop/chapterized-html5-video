@@ -5,7 +5,6 @@ $(document).ready(function(){
 		//hasFlash = swfobject.hasFlashPlayerVersion('9.0.45');
 
 
-
 			var duration,
 				flags = {
 					'first' : false,
@@ -28,7 +27,6 @@ $(document).ready(function(){
 				chapterClicker = function(i) {
 					$('.' + chapters[key]).on('click', function(){
 						myVideo.currentTime = i;
-
 						myVideo.play();
 						$('video,#play-pause').removeClass('paused').addClass('playing');
 
@@ -36,29 +34,24 @@ $(document).ready(function(){
 
 				};
 
-
 				for (var key in chapters) {
 					chapterClicker(key);
-
-
 				}
 
 				myVideo.onloadedmetadata = function(){
 					duration = myVideo.duration;
 					myVideo.currentTime = 0;
-
 				};
 
 				myVideo.ontimeupdate = function() {
 					trackVideoPlay('video', myVideo.currentTime, duration, chapters);
-		     	onTrackedVideoFrame(currentChapter, this.duration);
-
 				};
 
 				myVideo.onended = function() {
 					myVideo.currentTime = 0;
 					$('video, #play-pause').removeClass('playing');
 				}
+
 				//handle play/pause
 				$('video, #play-pause').on('click', function(){
 					if ($(this).hasClass('playing')){
@@ -71,42 +64,39 @@ $(document).ready(function(){
 						myVideo.play();
 					}
 				});
+
 				//previous and next functions
 
 				$('.next').click(function(){
-				if (currentChapter !== 'chapter-5') {
-
-					$('.' + currentChapter).next().trigger('click');
-
-				}
-				else if (currentChapter === 'chapter-5'){
+					if (currentChapter !== 'chapter-5') {
+						$('.' + currentChapter).next().trigger('click');
+					}
+					else if (currentChapter === 'chapter-5'){
 						myVideo.currentTime = 0;
 						myVideo.play();
-				}
-			});
+					}
+				});
 
-			$('.prev').click(function(){
-				if (currentChapter !== 'chapter-1') {
-
-					$('.' + currentChapter).prev().trigger('click');
-
-				}
-				else if (currentChapter === 'chapter-1'){
+				$('.prev').click(function(){
+					if (currentChapter !== 'chapter-1') {
+						$('.' + currentChapter).prev().trigger('click');
+					}
+					else if (currentChapter === 'chapter-1'){
 						myVideo.currentTime = 20;
 						myVideo.play();
-				}
-			});
+					}
+				});
 
 // custom controls
 		$('#fullscreen').on('click', function(){
-			$('html').toggleClass('fullscreen');
+			$('html').addClass('fullscreen');
 		});
 
 		$('#volume-range').change(function(){
 			var currentVolume = myVideo.volume;
 			newVolume = $(this)[0].value;
 			myVideo.volume = newVolume;
-			checkVolumeChange();
+			trackVolumeChange();
 		});
 
 		function onTrackedVideoFrame(currentChapter, currentTime, duration){
@@ -117,35 +107,15 @@ $(document).ready(function(){
     	$('#current').text(currentTime);
     	$("#duration").text(duration);
 		}
-		//switch cases for volume animation
-		function checkVolumeChange(volume, newVolume) {
+		function trackVolumeChange(volume, newVolume) {
 			volume = myVideo.volume;
-			volumeIcon = $('#volume-icon');
-
+			console.log(volume);
 			switch(volume){
-				case volume=0:
-					volumeIcon.removeClass().addClass('mute')
-					console.log('0');
+				case volume*0.25:
+					$('#volume-icon').addClass('quarter');
+					console.log(hit);
 					break;
-				case volume=.25:
-					volumeIcon.removeClass().addClass('quarter')
-					console.log('.25');
-					break;
-
-			case volume=.5:
-					volumeIcon.removeClass().addClass('half')
-					console.log('.5');
-					break;
-
-			case volume=.75:
-					volumeIcon.removeClass().addClass('third')
-					console.log('.75');
-					break;
-
-			case volume=1:
-					volumeIcon.removeClass().addClass('max')
-					console.log('1');
-					break;
+				}
 			}
 		}
 		function trackVideoPlay(videoType, progress, duration, chapters) {
