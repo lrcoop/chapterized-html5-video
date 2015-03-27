@@ -164,9 +164,18 @@
 		}
 		#volume-icon {
 			display:inline-block;
-			width: 20px;
-			height: 20px;
-			background: red;
+			width: 34px;
+			height: 28px;
+			background: url('images/volume-sprite.png') no-repeat 0 0;
+			&.quarter {
+				background-position: 0 -61px;
+			}
+			&.half {
+				background-position: 0 -30px;
+			}
+			&.mute {
+				background-position: 0  -121px;
+			}
 		}
 	}
 

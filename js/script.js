@@ -102,6 +102,20 @@ $(document).ready(function(){
 			$('html').toggleClass('fullscreen');
 		});
 
+	//volume icon toggle mute and update volume range input
+		$('#volume-icon').click(function(){
+
+			if(myVideo.volume>0){
+				myVideo.volume = 0;
+				$('#volume-range')[0].value = 0;
+			} else {
+				myVideo.volume = 1;
+				$('#volume-range')[0].value = 1;
+			}
+			checkVolumeChange();
+		});
+
+
 		$('#volume-range').change(function(){
 			var currentVolume = myVideo.volume;
 			newVolume = $(this)[0].value;

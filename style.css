@@ -306,9 +306,15 @@ input[type="range"]:focus::-ms-fill-upper {
     width: 75px; }
   #volume-control #volume-icon {
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    background: red; }
+    width: 34px;
+    height: 28px;
+    background: url("images/volume-sprite.png") no-repeat 0 0; }
+    #volume-control #volume-icon.quarter {
+      background-position: 0 -61px; }
+    #volume-control #volume-icon.half {
+      background-position: 0 -30px; }
+    #volume-control #volume-icon.mute {
+      background-position: 0  -121px; }
 
 video {
   cursor: pointer; }
