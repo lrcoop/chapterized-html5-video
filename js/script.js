@@ -96,13 +96,28 @@ $(document).ready(function(){
 						myVideo.play();
 				}
 			});
+//show-hide video control bar -- need to figure out how to fix when goes fullscreen etc
 
+	$('video, #controls-wrapper').hover( function(){
+		videoOffsetTop = $('video').offset().top;
+		videoHeight = $('video').height();
+		controlsHeight = $('#controls-wrapper').height()+30;
+		controlsPosition = videoOffsetTop + videoHeight - controlsHeight;
+		console.log(controlsPosition);
+
+    $('#controls-wrapper').addClass('visible').css('top', controlsPosition);
+    });
+   $('video').on('mouseout', function(){
+    $('#controls-wrapper').removeClass('visible');
+    });
 // custom controls
 		$('#fullscreen').on('click', function(){
 			$('html').toggleClass('fullscreen');
+			$('#controls-wrapper').toggleClass('fullscreen-mode');
 		});
 
 	//volume icon toggle mute and update volume range input
+	//!! DOESNT WORK IN SAFARI
 		$('#volume-icon').click(function(){
 
 			if(myVideo.volume>0){

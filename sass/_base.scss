@@ -57,6 +57,7 @@ p {
 }
 
 #video-wrapper {
+  text-align: center;
 	.fullscreen & {
 		width: 100%;
 		height: auto;
@@ -64,6 +65,7 @@ p {
 	margin: 0 auto;
 	width: 80%;
 	height: 80%;
+  position: relative;
 
 	video {
 		.fullscreen & {
@@ -71,8 +73,13 @@ p {
 			height: auto;
 			margin: 0 auto;
 		}
-		border: 2px solid #fff;
-		margin: 20px auto;
+    -webkit-box-shadow: 6px -6px 31px -9px rgba(0,0,0,0.61);
+    -moz-box-shadow: 6px -6px 31px -9px rgba(0,0,0,0.61);
+    box-shadow: 6px -6px 31px -9px rgba(0,0,0,0.61);
+    height: auto;
+    width: 100%;
+		border: 2px solid #999;
+		margin: 20px auto 0;
 	}
 }
 
