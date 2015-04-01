@@ -4,8 +4,6 @@ $(document).ready(function(){
 	var myVideo = document.getElementById('my-video');
 		//hasFlash = swfobject.hasFlashPlayerVersion('9.0.45');
 
-
-
 			var duration,
 				flags = {
 					'first' : false,
@@ -103,7 +101,7 @@ $(document).ready(function(){
 		videoHeight = $('video').height();
 		controlsHeight = $('#controls-wrapper').height()+30;
 		controlsPosition = videoOffsetTop + videoHeight - controlsHeight;
-		console.log(controlsPosition);
+
 
     $('#controls-wrapper').addClass('visible').css('top', controlsPosition);
     });
@@ -234,8 +232,5 @@ $(document).ready(function(){
 				currentChapter = chapters[progress];
 
 			}
-
-
-
 	}
 });
