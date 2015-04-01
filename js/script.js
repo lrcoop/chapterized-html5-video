@@ -94,20 +94,7 @@ $(document).ready(function(){
 						myVideo.play();
 				}
 			});
-//show-hide video control bar -- need to figure out how to fix when goes fullscreen etc
 
-	// $('video, #controls-wrapper').hover( function(){
-	// 	videoOffsetTop = $('video').offset().top;
-	// 	videoHeight = $('video').height();
-	// 	controlsHeight = $('#controls-wrapper').height();
-	// 	controlsPosition = videoOffsetTop + videoHeight - controlsHeight;
-
-
- //    $('#controls-wrapper').addClass('visible').css('top', controlsPosition);
- //    });
- //   $('video').on('mouseout', function(){
- //    $('#controls-wrapper').removeClass('visible');
- //    });
 // custom controls
 		$('#fullscreen').on('click', function(){
 			var width = $(window).width();
