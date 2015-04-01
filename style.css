@@ -251,6 +251,11 @@ input[type="range"]:focus::-ms-fill-upper {
     position: relative;
     top: -59px; }
 
+.controls-wrapper-inner {
+  position: absolute;
+  background: none;
+  width: 80%; }
+
 .control {
   display: table-cell;
   text-align: center;
