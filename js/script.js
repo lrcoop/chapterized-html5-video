@@ -96,34 +96,44 @@ $(document).ready(function(){
 			});
 //show-hide video control bar -- need to figure out how to fix when goes fullscreen etc
 
-	$('video, #controls-wrapper').hover( function(){
-		videoOffsetTop = $('video').offset().top;
-		videoHeight = $('video').height();
-		controlsHeight = $('#controls-wrapper').height()+30;
-		controlsPosition = videoOffsetTop + videoHeight - controlsHeight;
+	// $('video, #controls-wrapper').hover( function(){
+	// 	videoOffsetTop = $('video').offset().top;
+	// 	videoHeight = $('video').height();
+	// 	controlsHeight = $('#controls-wrapper').height();
+	// 	controlsPosition = videoOffsetTop + videoHeight - controlsHeight;
 
 
-    $('#controls-wrapper').addClass('visible').css('top', controlsPosition);
-    });
-   $('video').on('mouseout', function(){
-    $('#controls-wrapper').removeClass('visible');
-    });
+ //    $('#controls-wrapper').addClass('visible').css('top', controlsPosition);
+ //    });
+ //   $('video').on('mouseout', function(){
+ //    $('#controls-wrapper').removeClass('visible');
+ //    });
 // custom controls
 		$('#fullscreen').on('click', function(){
-			$('html').toggleClass('fullscreen');
-			$('#controls-wrapper').toggleClass('fullscreen-mode');
+			var width = $(window).width();
+			var controlsHeight = $(window).height() - $('video').height();
+			console.log(controlsHeight);
+
+
+			$('body').toggleClass('fullscreen');
+			$('#controls-wrapper, .chapters').toggleClass('fullscreen-mode');
+
+
+
+
+
 		});
 
 	//volume icon toggle mute and update volume range input
 	//!! DOESNT WORK IN SAFARI
 		$('#volume-icon').click(function(){
 
-			if(myVideo.volume>0){
+			if(myVideo.volume!=0){
 				myVideo.volume = 0;
-				$('#volume-range')[0].value = 0;
+				//$('#volume-range')[0].value = 0;
 			} else {
 				myVideo.volume = 1;
-				$('#volume-range')[0].value = 1;
+			//	$('#volume-range')[0].value = 1;
 			}
 			checkVolumeChange();
 		});

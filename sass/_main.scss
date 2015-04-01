@@ -3,39 +3,49 @@
 
 		width: 100%;
 		display: table;
-		height: 60px;
+		height: 40px;
 		margin: 0;
 		-webkit-margin-before: 0;
 		-webkit-padding-start: 0px;
 		position: relative;
-		top:-5px;
+		top: -5px;
+		&.fullscreen-mode {
+			opacity: 0.5;
+			position: relative;
+			top: -59px;
+			height: 25px;
 
+			li {
+				height: 25px;
+			}
+		}
 
 		li {
 			background: red;
 			cursor: pointer;
 			display: table-cell;
-			height: 60px;
+			height: 40px;
 			vertical-align: middle;
 			border: 1px solid #999;
-
+			font-size: 12px;
 			&.current {
 				background: #fff;
 				color: red;
 			}
 		}
 	}
+
+
 	#controls-wrapper {
-
-		margin: 0 5%;
-		width: 90%;
+		display: table;
+		margin: 0 .25%;
+		width: 99.5%;
+		padding: 0 2%;
 		background: #333;
-		padding: 10px 50px;
+		height: 30px;
 		text-align: center;
-
-		border-radius: 5px;
-		opacity: 0;
-		visibility: hidden;
+		opacity: 0.6;
+		margin-top: -36px;
 		position: absolute;
 		-webkit-box-shadow: inset -1px -2px 41px -9px rgba(0,0,0,0.61);
 		-moz-box-shadow: inset -1px -2px 41px -9px rgba(0,0,0,0.61);
@@ -46,27 +56,47 @@
 			opacity: 1;
 			visibility:visible;
 		}
+		&.fullscreen-mode {
+			width: 100%;
+			margin: 0;
+			position: relative;
+			top: -59px;
+		}
+	}
+
+	.control {
+		display:table-cell;
+		text-align: center;
+		vertical-align: middle;
+		font-size: 14px;
+		opacity: 1;
 	}
 	#progress-wrap {
-		float: left;
-		width: 80px;
-		display: inline-block;
+		height: 30px;
+		width: 100px;
+		display: table-cell;
+		margin-left: 30px;
 		div{
 			width: 25px;
 			display: inline-block;
 			text-align: center;
+			vertical-align: middle;
 		}
 		span{
 			display: inline-block;
 			width: 10px;
 			text-align:center;
+			vertical-align: middle;
 		}
 	}
 	#play-pause {
-		display: inline-block;
-		float: left;
-		width: 20px;
-		height: 20px;
+		padding-left: 1%;
+		margin: 5px;
+		display:table-cell;
+		position: relative;
+		width: 30px;
+		text-align: center;
+		vertical-align: middle;
 		text-indent: 9999px;
 		&.playing {
 			.play-button {
@@ -87,17 +117,19 @@
 				display:block;
 				width: 0;
 				height: 0;
-				border-top: 10px solid transparent;
-				border-left: 15px solid white;
-				border-bottom: 10px solid transparent;
+				border-top: 8px solid transparent;
+				border-left: 12px solid white;
+				border-bottom: 8px solid transparent;
 				opacity: 1;
 				visibility: visible;
+				top: 5px;
 			}
 			.pause-button {
 				transition: all 0.25s ease;
 				position: absolute;
 				opacity: 0;
 				visibility: hidden;
+				top: 5px;
 				span {
 					width: 5px;
 				  height: 15px;
@@ -112,15 +144,18 @@
 	}
 
 	.chapter-skip-wrap {
-		float: left;
-		margin: 2px 0 0 20px;
+		display: table-cell;
+		width: 100px;
+		vertical-align: middle;
+		margin: 0px 0 0 20px;
 
 		.btn {
-			float: left;
+
 			width: 18px;
 			height: 20px;
 			margin-right: 10px;
 			display:inline-block;
+
 
 			&.prev {
 				width: 30px;
@@ -174,19 +209,15 @@
 
 	}
 	#volume-control {
-		width: 150px;
-		float: left;
-		display: inline-block;
-
-		input {
-			margin-top:-15px;
-			width: 75px;
-		}
+		width: 40px;
+		height: 16px;
+		display: table-cell;
+		vertical-align: middle;
 		#volume-icon {
-			display:inline-block;
-			width: 34px;
-			height: 28px;
-			background: url('images/volume-sprite.png') no-repeat 0 0;
+			display: inline-block;
+			width: 15px;
+			height: 16px;
+			background: url('images/volume-sprite.png') no-repeat 0 2px;
 			&.quarter {
 				background-position: 0 -61px;
 			}
@@ -194,22 +225,35 @@
 				background-position: 0 -30px;
 			}
 			&.mute {
-				background-position: 0  -121px;
+				background-position: 0  -14px;
 			}
 		}
 	}
-	#fullscreen {
-		float: right;
-		background:url('images/fullscreen-3.png') no-repeat 0 -45px;
-		width: 30px;
-		height: 30px;
-		display: inline-block;
-		position: relative;
-		top: -10px;
 
-		.fullscreen-mode & {
-			background-position: 0 0;
+	#current-chapter {
+		width:100px;
+		text-align: center;
+		font-size: 13px;
+	}
+
+	#fullscreen {
+
+
+		width: 15px;
+		height: 18px;
+		display: table-cell;
+		vertical-align: middle;
+		.fullscreen-icon {
+			background:url('images/fullscreen-3.png') no-repeat 0 -20px;
+			display:inline-block;
+			width: 15px;
+			height:18px;
+			.fullscreen-mode & {
+
+			background-position: 0 2px;
+			}
 		}
+
 	}
 	video {
 		cursor: pointer;

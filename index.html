@@ -25,37 +25,43 @@
 		  		<source src="media/dizzy.flv" type="video/flv">
 				  Your browser does not support the video tag.
 				</video>
+
 				<div id="controls-wrapper">
-					<div id="play-pause">
-					     <span class="play-button"></span>
-					     <div class="pause-button">
-					      <span> </span>
-					       <span> </span>
-					    </div>
-					 </div>
-					<div class="chapter-skip-wrap">
-						<div class="prev btn">
-							<span></span>
-							<span></span>
+					<div class="controls-wrapper-inner">
+						<div id="play-pause" class="control">
+						     <span class="play-button"></span>
+						     <div class="pause-button">
+						      <span> </span>
+						       <span> </span>
+						    </div>
+						 </div>
+						<div class="chapter-skip-wrap" class="control">
+							<div class="prev btn">
+								<span></span>
+								<span></span>
+							</div>
+							<div class="next btn">
+								<span> </span>
+						       <span> </span>
+							</div>
 						</div>
-						<div class="next btn">
-							<span> </span>
-					       <span> </span>
+						<div id="progress-wrap" class="control">
+							<div id="current"></div>
+							<span class="divider">/</span>
+							<div id="duration"></div>
+						</div>
+						<div id="current-chapter" class="control"></div>
+						<div id="volume-control" class="control">
+							<span id="volume-icon"></span>
+
+							<!-- <input type="range" min="0" max="1" value="1" id="volume-range" step="1"> -->
+						</div>
+
+
+						<div id="fullscreen" class="control">
+							<span class="fullscreen-icon"></span>
 						</div>
 					</div>
-					<div id="progress-wrap">
-						<div id="current"></div>
-						<span class="divider">/</span>
-						<div id="duration"></div>
-					</div>
-					<div id="volume-control">
-						<span id="volume-icon"></span>
-
-						<input type="range" min="0" max="1" value="1" id="volume-range" step="1">
-					</div>
-					<div id="current-chapter"></div>
-
-					<div id="fullscreen"></div>
 				</div><!-- end controls-wrapper -->
 				<ul class="chapters">
 					<li class="chapter-1">Chapter 1</li>
