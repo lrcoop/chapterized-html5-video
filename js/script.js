@@ -130,12 +130,14 @@ $(document).ready(function(){
 
 			if(myVideo.volume!=0){
 				myVideo.volume = 0;
+				$(this).removeClass('max').addClass('mute');
 				//$('#volume-range')[0].value = 0;
 			} else {
 				myVideo.volume = 1;
 			//	$('#volume-range')[0].value = 1;
+				$(this).removeClass('mute').addClass('max');
 			}
-			checkVolumeChange();
+
 		});
 
 
