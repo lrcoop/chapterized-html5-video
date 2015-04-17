@@ -1,3 +1,5 @@
+# chapterized-html5-video
+Chapterized HTML5 video
 Chapterized video
 =====================
 run this command in terminal from the root folder:
